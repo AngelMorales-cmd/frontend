@@ -263,7 +263,7 @@ export default function Dashboard({ onModelsUpdate }) {
     <div className="dashboard-container">
       {/* Header */}
       <header className="dashboard-header">
-        <h1>👋 Sistema de Reconocimiento de Señas</h1>
+        <h1>Innova Tec - Vision&Señas-IA</h1>
         <p className="header-subtitle">Interfaz para captura, entrenamiento y predicción de lenguaje de señas</p>
       </header>
 
@@ -568,7 +568,7 @@ export default function Dashboard({ onModelsUpdate }) {
 
       {/* Footer */}
       <footer className="dashboard-footer">
-        <p>Sistema de Reconocimiento de Señas - {new Date().getFullYear()}</p>
+        <p>Sistema de reconocimiento de lenguaje de señas con MediaPipe Hands - {new Date().getFullYear()}</p>
       </footer>
 
     </div>
