@@ -134,8 +134,8 @@ export default function Dashboard({ onModelsUpdate }) {
       fd.append('label', label);
       fd.append('file', blob, 'frame.jpg');
 
-      const res = await axios.post('http://127.0.0.1:8000/api/upload_sample', fd, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      const res = await axios.post('https://backend-fastapi-3yov.onrender.com/api/upload_sample', fd, {
+      headers: { 'Content-Type': 'multipart/form-data' }
       });
       
       setSuccess(res.data.message);
@@ -158,7 +158,7 @@ export default function Dashboard({ onModelsUpdate }) {
   // Obtener información de muestras
   const fetchSamplesInfo = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/samples');
+      const res = await axios.get('https://backend-fastapi-3yov.onrender.com/api/samples');
       setSamplesInfo(res.data);
     } catch (err) {
       console.error('Error fetching samples info:', err);
@@ -172,7 +172,7 @@ export default function Dashboard({ onModelsUpdate }) {
     }
     
     try {
-      const res = await axios.delete('http://127.0.0.1:8000/api/clear_samples');
+      const res = await axios.delete('https://backend-fastapi-3yov.onrender.com/api/clear_samples');
       setSamplesInfo({});
       setSuccess(res.data.message);
     } catch (err) {
@@ -191,8 +191,7 @@ export default function Dashboard({ onModelsUpdate }) {
       const fd = new FormData();
       fd.append('name', modelName);
       
-      const res = await axios.post('http://127.0.0.1:8000/api/train', fd);
-      
+      const res = await axios.post('https://backend-fastapi-3yov.onrender.com/api/train', fd);
       setSuccess(res.data.message);
       if (onModelsUpdate) onModelsUpdate();
       fetchModels();
@@ -208,7 +207,7 @@ export default function Dashboard({ onModelsUpdate }) {
   // Obtener modelos
   const fetchModels = useCallback(async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/models');
+      const res = await axios.get('https://backend-fastapi-3yov.onrender.com/api/models');
       setModels(res.data.models || []);
     } catch (err) {
       console.error('Error fetching models:', err);
@@ -241,9 +240,10 @@ export default function Dashboard({ onModelsUpdate }) {
       fd.append('file', blob, 'frame.jpg');
       fd.append('model', model);
 
-      const res = await axios.post('http://127.0.0.1:8000/api/predict', fd, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      const res = await axios.post('https://backend-fastapi-3yov.onrender.com/api/predict', fd, {
+      headers: { 'Content-Type': 'multipart/form-data' }
       });
+
       
       setPrediction(res.data.prediction);
       setConfidence(res.data.confidence);
@@ -263,7 +263,7 @@ export default function Dashboard({ onModelsUpdate }) {
     <div className="dashboard-container">
       {/* Header */}
       <header className="dashboard-header">
-        <h1>Innova Tec - Vision&Señas-IA</h1>
+        <h1>👋 Sistema de Reconocimiento de Señas</h1>
         <p className="header-subtitle">Interfaz para captura, entrenamiento y predicción de lenguaje de señas</p>
       </header>
 
@@ -568,7 +568,7 @@ export default function Dashboard({ onModelsUpdate }) {
 
       {/* Footer */}
       <footer className="dashboard-footer">
-        <p>Sistema de reconocimiento de lenguaje de señas con MediaPipe Hands - {new Date().getFullYear()}</p>
+        <p>Sistema de Reconocimiento de Señas - {new Date().getFullYear()}</p>
       </footer>
 
     </div>
